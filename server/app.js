@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const path = require("path");
 
 const carRoutes = require("./routes/carRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use("/cars", carRoutes);
+app.use("/users", userRoutes);
 
 
 
@@ -33,8 +35,8 @@ const mongourl = process.env.MONGO_URL;
 
 mongoose
   .connect(mongourl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
   })
   .then(() => {
     app.listen(PORT, () => console.log(`your app is running on ${PORT}`));

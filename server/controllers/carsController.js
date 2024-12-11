@@ -40,7 +40,8 @@ const addCar = async (req, res) => {
         const car = await newCar.save();
         res.json(car);
     } catch (error) {
-        console.log(error).json({message:"Server Error"});
+        console.log(error);
+        res.status(500).json({message:"Server Error"});
     }
 }
 
@@ -77,6 +78,9 @@ const deleteCar = async (req, res) => {
     }
 }
 
+
+
+
 // export functions
 
 module.exports = {
@@ -84,5 +88,5 @@ module.exports = {
     getCarById,
     addCar,
     updateCar,
-    deleteCar
+    deleteCar,
 }
